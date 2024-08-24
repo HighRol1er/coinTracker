@@ -51,7 +51,7 @@ const MainComponent = () => {
             repeat: Infinity,
           }}
           />
-        <img src={gradient} className='gradient'/>
+        <img src={gradient} alt="" className='gradient'/>
       </div>
     </div>
   )
