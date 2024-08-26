@@ -5,8 +5,17 @@ import axios from 'axios';
 import Search from '../components/Dashboard/Search';
 
 const DashboardPage = () => {
-
   const [coins, setCoins] = useState([]);
+  const [search, setSearch] = useState("");
+
+  const onSearchChange = (e) => {
+    setSearch(e.target.value);
+  }
+
+  let filteredCoins = coins.filter((item) =>
+    item.name.toLowerCase().includes(search.toLowerCase()) || 
+    item.symbol.toLowerCase().includes(search.toLowerCase())
+  );
 
   useEffect(() => {
     // fetch(
@@ -51,8 +60,8 @@ const DashboardPage = () => {
   return (
     <div>
       <Header/>
-      <Search />
-      <TabsComponent coins={coins}/>
+      <Search search={search} onSearchChange={onSearchChange} />
+      <TabsComponent coins={filteredCoins}/>
     </div>
   )
 }
