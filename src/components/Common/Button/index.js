@@ -4,8 +4,7 @@ import "./styles.css";
 const Button = ({ text, onClick, outlined }) => {
   return (
     <div 
-      className={outlined ? "outlined-btn" : 'btn'} 
-      onClick={onClick}>
+      className={outlined ? "outlined-btn" : 'btn'}>
       {text}
     </div>
   )

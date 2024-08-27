@@ -17,9 +17,19 @@ const DashboardPage = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const handlePageChange = (event, value) => {
-    setPage(value);
+    setPage(value);//1
+    console.log(value);
     let previousIndex = (value - 1) * 10;
     setPaginatedCoins(coins.slice(previousIndex, previousIndex + 10));
+    /*
+            previndex, previndex + 10
+    value=1 [0 , 10]
+    value=2 [10, 20]
+    value=3 [20, 30]
+    ...
+    value=9 [80, 90]
+    value=10[90, 100] //배열의 끝 요소는 해당X하기때문에
+     */
   }
 
   const onSearchChange = (e) => {
@@ -38,7 +48,7 @@ const DashboardPage = () => {
     axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&x_cg_demo_api_key=${apiKey}`)
     .then((res) => {
       // code for handling the res
-      console.log("Response", res);
+      // console.log("Response", res);
       setCoins(res.data);
       setPaginatedCoins(res.data.slice(0, 10));
       setIsLoading(false);
@@ -47,8 +57,8 @@ const DashboardPage = () => {
       // code for handling the error
       console.log("error",error);
       setIsLoading(false);
-    })
-  },[])
+    });
+  },[apiKey]);
   // useEffect(() => {
   //   const options = {
   //     method: 'GET',

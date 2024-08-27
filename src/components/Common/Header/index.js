@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   const onClickBtn = () => {
-    console.log("BtnClicked");
+    
   }
   return (
     <div className='navbar'>
@@ -26,7 +26,7 @@ const Header = () => {
         <Link to="/dashboard">
           <Button 
             text={"dashboard"}
-            onClick={onClickBtn()} 
+             
           />
         </Link>
         
