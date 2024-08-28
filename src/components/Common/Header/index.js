@@ -5,9 +5,7 @@ import Button from '../Button';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
-  const onClickBtn = () => {
-    
-  }
+
   return (
     <div className='navbar'>
       <h1 className='logo'>
