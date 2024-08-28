@@ -22,12 +22,8 @@ const Header = () => {
           <p className='link'>Watchlist</p>
         </Link>
         <Link to="/dashboard">
-          <Button 
-            text={"dashboard"}
-             
-          />
+          <Button text={"dashboard"} />
         </Link>
-        
       </div>
       <div className='mobile-drawer'>
         <AnchorTemporaryDrawer/>

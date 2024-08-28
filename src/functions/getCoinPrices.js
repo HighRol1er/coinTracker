@@ -38,7 +38,7 @@ import axios from "axios";
 export const getCoinPrices = (id, days, priceType) => {
   const apiKey = process.env.REACT_APP_CG_API_KEY;
   const prices = axios
-    .get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}&interval=daily&precision=0&x_cg_demo_api_key=${apiKey}`)
+    .get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}&interval=daily&precision=full&x_cg_demo_api_key=${apiKey}`)
     .then((res) => {
       console.log("Prices>>>>", res.data);
       return res.data[priceType]; // 어떤 속성에 동적으로 접근해야 할 때

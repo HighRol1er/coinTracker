@@ -1,10 +1,11 @@
 import React from 'react';
 import "./styles.css";
 
-const Button = ({ text, onClick, outlined }) => {
+const Button = ({ text, outlined }) => {
   return (
     <div 
-      className={outlined ? "outlined-btn" : 'btn'}>
+      className={outlined ? "outlined-btn" : 'btn'}
+    >
       {text}
     </div>
   )

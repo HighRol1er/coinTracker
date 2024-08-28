@@ -1,6 +1,7 @@
 import React from 'react'
 import ArrowUpwardRoundedIcon from '@mui/icons-material/ArrowUpwardRounded';
 import "./styles.css";
+
 function BackToTop() {
   let mybutton = document.getElementById("myBtn");
   
@@ -9,9 +10,10 @@ function BackToTop() {
   function scrollFunction() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
       mybutton.style.display = "flex";
-    } else {
-      mybutton.style.display = "none";
-    }
+    } 
+    // else {
+    //   mybutton.style.display = "none";
+    // }
   }
 
   // When the user clicks on the button, scroll to the top of the document

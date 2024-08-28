@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../components/Common/Header'
 import TabsComponent from '../components/Dashboard/Tabs'
-import axios from 'axios';
+// import axios from 'axios';
 import Search from '../components/Dashboard/Search';
 import PaginationComponent from '../components/Dashboard/Pagination';
 import Loader from '../components/Common/Loader';
 import BackToTop from '../components/Common/BackToTop';
+import { get100Coins } from '../functions/get100Coins';
 
 
 const DashboardPage = () => {
-  const apiKey = process.env.REACT_APP_CG_API_KEY;
+  // const apiKey = process.env.REACT_APP_CG_API_KEY;
   const [coins, setCoins] = useState([]);
   const [paginatedCoins, setPaginatedCoins] =useState([])
   const [search, setSearch] = useState("");
@@ -42,47 +43,34 @@ const DashboardPage = () => {
   );
 
   useEffect(() => {
-    // fetch(
-    //   "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&x_cg_demo_api_key={키값 "{}"는 빼고 }"
-    // )
-    axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&x_cg_demo_api_key=${apiKey}`)
-    .then((res) => {
-      // code for handling the res
-      // console.log("Response", res);
-      setCoins(res.data);
-      setPaginatedCoins(res.data.slice(0, 10));
+    // // fetch(
+    // //   "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&x_cg_demo_api_key={키값 "{}"는 빼고 }"
+    // // )
+    // axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&x_cg_demo_api_key=${apiKey}`)
+    // .then((res) => {
+    //   // code for handling the res
+    //   // console.log("Response", res);
+    //   setCoins(res.data);
+    //   setPaginatedCoins(res.data.slice(0, 10));
+    //   setIsLoading(false);
+    // })
+    // .catch((error) => {
+    //   // code for handling the error
+    //   console.log("error",error);
+    //   setIsLoading(false);
+    // });
+    getData();
+  },[]);
+
+  const getData = async () => {
+    const myCoins = await get100Coins();
+    if(myCoins) {
+      setCoins(myCoins);
+      setPaginatedCoins(myCoins.slice(0, 10));
       setIsLoading(false);
-    })
-    .catch((error) => {
-      // code for handling the error
-      console.log("error",error);
-      setIsLoading(false);
-    });
-  },[apiKey]);
-  // useEffect(() => {
-  //   const options = {
-  //     method: 'GET',
-  //     url: 'https://api.coingecko.com/api/v3/coins/markets',
-  //     params: {
-  //       vs_currency: 'usd',
-  //       order: 'market_cap_desc',
-  //       per_page: '100',
-  //       page: '1',
-  //       sparkline: 'false',
-  //       x_cg_demo_api_key: '{키 값}'
-  //     },
-  //     headers: {accept: 'application/json'}
-  //   };
-    
-  //   axios
-  //     .request(options)
-  //     .then(function (response) {
-  //       console.log(response.data);
-  //     })
-  //     .catch(function (error) {
-  //       console.error(error);
-  //     });
-  // },[]);
+    }
+  };
+
   return (
     <>
      <Header/>
