@@ -9,7 +9,7 @@ const HomePage = () => {
     <>
       <Header/>
       <MainComponent />
-      {/* <Footer/> */}
+      <Footer/>
     </>
   )
 }

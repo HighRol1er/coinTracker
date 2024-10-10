@@ -11,6 +11,7 @@ import { removeItemToWatchlist } from '../../../functions/removeItemToWatchlist'
 const Grid = ({ coin }) => {
   const watchlist = JSON.parse(localStorage.getItem("watchlist"));
   const [isCoinAdded, setIsCoinAdded] = useState(watchlist?.includes(coin.id));
+  console.log(coin.id);
   return (
     <Link to={`/coin/${coin.id}`}>
       <div className={`grid-container ${coin.price_change_percentage_24h < 0 && "grid-container-red" }`}>

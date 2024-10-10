@@ -31,5 +31,3 @@ function CoinInfo({heading, desc}) {
 
 export default CoinInfo;
 
-
-

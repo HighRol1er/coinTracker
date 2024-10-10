@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Footer from './components/Common/Footer';
 import Home from './pages/HomePage';
 import WatchListPage from './pages/WatchListPage';
 import ComparePage from './pages/ComparePage';

@@ -34,7 +34,7 @@ const ComparePage = () => {
   const handlePriceTypeChange = async (e, newType) => {
     setIsLoading(true);
     setPriceType(newType);
-      const prices1 = await getCoinPrices(crypto1, days, newType);
+      const prices1 = await getCoinPrices(crypto1, days, newType); // promise.all, promise.allsettled <희연이가 공부하래
       const prices2 = await getCoinPrices(crypto2, days, newType);
       settingChartData(setChartData, prices1, prices2);
       setIsLoading(false);

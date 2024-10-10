@@ -80,14 +80,12 @@
   }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 768px) {
   .flex-info {
     flex-direction: column;
   }
   .phone-container {
-    display: block;
-    margin : auto;
-    margin-top: 1rem;;
+    display: none;
   }
   .iphone {
     top: 4rem;

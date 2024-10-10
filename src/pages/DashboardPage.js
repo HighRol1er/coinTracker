@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../components/Common/Header'
-import TabsComponent from '../components/Dashboard/Tabs'
-// import axios from 'axios';
 import Search from '../components/Dashboard/Search';
-import PaginationComponent from '../components/Dashboard/Pagination';
 import Loader from '../components/Common/Loader';
 import BackToTop from '../components/Common/BackToTop';
+import TabsComponent from '../components/Dashboard/Tabs'
+import PaginationComponent from '../components/Dashboard/Pagination';
 import { get100Coins } from '../functions/get100Coins';
 
 
 const DashboardPage = () => {
-  // const apiKey = process.env.REACT_APP_CG_API_KEY;
   const [coins, setCoins] = useState([]);
   const [paginatedCoins, setPaginatedCoins] =useState([])
   const [search, setSearch] = useState("");
@@ -42,26 +40,6 @@ const DashboardPage = () => {
     item.symbol.toLowerCase().includes(search.toLowerCase())
   );
 
-  useEffect(() => {
-    // // fetch(
-    // //   "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&x_cg_demo_api_key={키값 "{}"는 빼고 }"
-    // // )
-    // axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&x_cg_demo_api_key=${apiKey}`)
-    // .then((res) => {
-    //   // code for handling the res
-    //   // console.log("Response", res);
-    //   setCoins(res.data);
-    //   setPaginatedCoins(res.data.slice(0, 10));
-    //   setIsLoading(false);
-    // })
-    // .catch((error) => {
-    //   // code for handling the error
-    //   console.log("error",error);
-    //   setIsLoading(false);
-    // });
-    getData();
-  },[]);
-
   const getData = async () => {
     const myCoins = await get100Coins();
     if(myCoins) {
@@ -70,6 +48,10 @@ const DashboardPage = () => {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    getData();
+  },[]);
 
   return (
     <>
